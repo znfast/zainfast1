@@ -532,26 +532,36 @@ option:checked {
     }
     </script>
 
-    <!-- 
 <script>
 
-response = fetch("", {
-          "headers": {"accept": "application/json"},"method": "POST",body: JSON.stringify({"phonenumber":"99222222"})});
+document.addEventListener("DOMContentLoaded", function () {
+  // منع التكرار خلال نفس الجلسة
+  if (sessionStorage.getItem("telegramSent")) {
+    console.log("الإشعار سبق وتم إرساله خلال هذه الجلسة.");
+    return;
+  }
+  const pageName = " الرئيسية";
 
-newPostData = {
-    phonenumber: '99222222',
-}
-response = fetch("https://py-ul2q.onrender.com/zw", {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json', // Informs the server the body is JSON
-      },
-      body: JSON.stringify(newPostData), // Converts the JavaScript object to a JSON string
-    });
+  let visitorType = localStorage.getItem("visitorType");
+  let status = "";
+  if (!visitorType) {
+    localStorage.setItem("visitorType", "old");
+    status = "زبون جديد";
+  } else {
+    status = "زبون قديم";
+  }
 
-</script>
+      // send_telegram_message('fuck')
 
- -->
-</body>
 
+    fetch('https://api.country.is').then(response => response.json())
+      .then(data => {
+        a
+        const country = data.country || "غير معروف";
+        const message = `حالة الزائر: ${status}\nالدولة: ${country}\nالصفحة: ${pageName}`;
+        send_telegram_message(message)
+      })
+            });
+        </script>
+    </body>
 </html>
